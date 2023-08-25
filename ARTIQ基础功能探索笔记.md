@@ -1,0 +1,81 @@
+# ARTIQ 基础功能探索笔记
+
+## Abstract
+
+本项目的目的是展示 ARTIQ 的基础功能，以更好的让 ARTIQ 初学者了解 ARTIQ 的使用。
+
+项目参考 Bham-ARTIQ-examples。
+
+## 项目内容
+
+### 1. led_on_off_pulse.py
+
+目的：演示 kasli 板子上 LED 灯的基本功能，并演示 ARTIQ 实验代码的基本结构。
+
+- Switch LED on
+- Switch LED off
+- Pulse LED
+
+### 2. led_parallel_sequential.py
+
+目的：演示 artiq 的并行和顺序功能
+
+### 3. ttlout_on_off_pulse.py
+
+目的：演示 ttl 电平输出的开、关、脉冲功能。
+
+### 4. ttl_input_read.py
+
+目的：演示 ttl 通道读取信号的功能
+
+### 5. ttl_input_trigger.py
+
+目的：演示将 ttl 通道接受 trigger （上升沿）信号来触发另一个通道
+
+### 6. sampler_single_sample.py
+
+目的：使用采样器
+
+but，目前的 ARTIQ 里面里没有 sampler 硬件
+
+### 7. urukul_single_output.py
+
+目的：用 urukul 输出单频信号
+
+### 8. urukul_GUI_frequency_input.py
+
+目的：演示 management system 来处理 user 的 input
+
+- 获取用户输入的频率（以MHz为单位），将其保存为属性；
+- 将振幅和通道衰减设置为变量；
+- 打开通道；
+- 将振幅和频率写入 urukul；
+- 关闭通道。
+
+### 9. urukul_GUI_amp_att_fre_input.py
+
+目标：演示 management system 使多个 input 参数显式可调
+
+### 10. urukul_ram_amp.py
+
+目标：演示在 urukul 上使用 RAM 代码。我们原本希望能够使用 RAM 进行频率扫描，但似乎这是不可能的，因此我们只有演示振幅扫描的代码。使用 RAM 模式的文档有限，这导致本示例的注释不像其他文档那样清晰。
+
+- 生成输出振幅列表
+- 初始化CPLD和Urukul通道
+- 设置RAM配置文件
+- 写入CFR（控制功能寄存器）
+- 设置通道频率和衰减
+- 打开通道
+- 循环以下步骤，直到手动停止：
+- 并行执行：
+- 脉冲TTL通道
+- 通过列表开始逐渐增加振幅
+- 并行执行：
+- 脉冲TTL通道
+- 通过列表开始逐渐降低振幅
+
+### 11. dds_test.py
+
+简化板的 urukul_single_putput.py
+
+### 12.
